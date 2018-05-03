@@ -19,7 +19,7 @@ class Postgis < Formula
 
   depends_on "pkg-config" => :build
   depends_on "gpp" => :build
-  depends_on "postgresql@9.6"
+  depends_on "jiffyondemand/tap/postgresql"
   depends_on "proj"
   depends_on "geos"
 
@@ -49,7 +49,7 @@ class Postgis < Formula
     args = [
       "--with-projdir=#{Formula["proj"].opt_prefix}",
       "--with-jsondir=#{Formula["json-c"].opt_prefix}",
-      "--with-pgconfig=#{Formula["postgresql@9.6"].opt_bin}/pg_config",
+      "--with-pgconfig=#{Formula["postgresql"].opt_bin}/pg_config",
       # Unfortunately, NLS support causes all kinds of headaches because
       # PostGIS gets all of its compiler flags from the PGXS makefiles. This
       # makes it nigh impossible to tell the buildsystem where our keg-only
